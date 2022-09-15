@@ -1,0 +1,435 @@
+* {
+    box-sizing: border-box;
+}
+
+// Fix HTML attribute 'hidden' not working on display:flex (and possibly other) elements
+[hidden] {
+    display: none;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+#game {
+    #ui {
+        z-index: 100;
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+
+        #escMenu {
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            border: 1px solid black;
+            background-color: white;
+            padding: 0 1rem 1rem;
+
+            button {
+                width: 100%;
+                margin-bottom: .5rem;
+            }
+            &-ping {
+
+            }
+            &-exit {
+
+            }
+        }
+        #disconnect {
+            position: fixed;
+            left: 0;
+            top: 50%;
+        }
+        #health {
+            position: fixed;
+            top: 0;
+            height: 1.75rem;
+            width: 10vw;
+            border-bottom: 2px solid black;
+            border-right: 2px solid black;
+            background-color: black;
+
+            &-bar {
+                width: 100%;
+                height: 100%;
+                /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff0000+8,ffff00+39,c7ff00+65,10ff00+86 */
+                background: #ff0000; /* Old browsers */
+                background: -moz-linear-gradient(left, #ff0000 8%, #ffff00 39%, #c7ff00 65%, #10ff00 82%); /* FF3.6-15 */
+                background: -webkit-linear-gradient(left, #ff0000 8%, #ffff00 39%, #c7ff00 65%, #10ff00 82%); /* Chrome10-25,Safari5.1-6 */
+                background: linear-gradient(to right, #ff0000 8%, #ffff00 39%, #c7ff00 65%, #10ff00 82%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0000', endColorstr='#10ff00', GradientType=1); /* IE6-9 */
+                background-size: 10vw;
+                background-position: left center;
+            }
+        }
+        #weapon {
+            color: white;
+            font-size: 1.1rem;
+            position: fixed;
+            top: 1.75rem;
+            left: 0;
+        }
+        #status {
+            padding: .3rem;
+            text-align: right;
+            color: white;
+            background-color: rgba(0, 0, 0, .3);
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+        #fakeLagAmountHolder {
+            position: fixed;
+            top: 54px;
+            right: 12px;
+        }
+        #countdown {
+            &-time {
+                left: 50%;
+                top: 40%;
+                transform: translateX(-50%) translateY(-50%);
+                position: absolute;
+                color: white;
+                font-weight: bold;
+            }
+            img {
+                width: 100%;
+            }
+            width: 5vw;
+            max-width: 80px;
+            left: 50%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+        #chat {
+
+        }
+        #scoreboard {
+            border: 2px solid black;
+            background-color: rgba(226, 226, 226, 0.5);
+            position: fixed;
+            top: 10%;
+            left: 10%;
+            right: 10%;
+            bottom: 10%;
+
+            &-header {
+                font-weight: bold;
+                padding: 0.2rem;
+                text-align: center;
+                border-bottom: 2px solid black;
+            }
+
+            &-content {
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                thead {
+                    position: relative;
+                }
+                tbody {
+                    tr:nth-child(odd) {
+                        background-color: rgba(0, 0, 0, 0.2);
+                    }
+                    tr:nth-child(even) {
+                        //background-color: rgba(255, 19, 0, 0.2);
+                    }
+                }
+                th:nth-child(1), td:nth-child(1) {
+                    padding-left: 1rem;
+                }
+                th:nth-child(1) {
+                    text-align: left;
+                }
+                td:nth-child(2), th:nth-child(2) {
+                    text-align: center;
+                    width: 4rem;
+                }
+                td:nth-child(3), th:nth-child(3) {
+                    text-align: center;
+                    width: 4rem;
+                }
+            }
+        }
+        #banner {
+            color: white;
+            background-color: rgba(0, 0, 0, .35);
+            left: 0;
+            right: 0;
+            font-size: 2rem;
+            text-align: center;
+            position: fixed;
+            top: 20%;
+        }
+    }
+    #canvasWrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+    }
+    #canvasForeground, #canvasBackground {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    #canvasBackground {
+        background-color: #7f361a;
+    }
+    #canvasForeground {
+
+    }
+}
+
+#menu {
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 40px;
+    width: 80%;
+    max-width: 1200px;
+    text-align: left;
+
+    #flex {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-items: stretch;
+
+        > * {
+            //flex-grow: 5;
+        }
+    }
+    table {
+        td {
+            padding-right: 1rem;
+        }
+    }
+    fieldset {
+        height: 100%;
+    }
+    button {
+
+    }
+    select {
+
+    }
+    option {
+
+    }
+}
+
+#log {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 500;
+    display: none;
+}
+
+.log {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+
+    .tagSearch {
+    }
+    .levelMinSearch {
+    }
+    .severitySearch {
+    }
+    .minTimeSearch {
+    }
+    .maxTimeSearch {
+
+    }
+    .searchButton {
+
+    }
+    .closeButton {
+
+    }
+    /* this holds all the above */
+    .filterHolder {
+        flex: 0 0;
+        display: flex;
+        align-items: stretch;
+        button {
+            border: 1px solid silver;
+        }
+    }
+
+    .view {
+        padding: .1rem;
+        border: solid 3px #606060;
+        border-top: solid 1px #606060;
+        background-color: #b2b2b2;
+        overflow-y: auto;
+        flex: 1 0;
+        [data-severity='Info'] {
+            color: #f8f8f8
+        }
+        [data-severity='Warning'] {
+            color: #ffd200
+        }
+        [data-severity='Fixme'] {
+            color: teal
+        }
+        [data-severity='Temp'] {
+            color: orange
+        }
+        [data-severity='Error'] {
+            color: red
+        }
+    }
+
+}
+
+#graphics {
+    display: none;
+}
+
+.sweetGradientBottomBorder::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: .5rem;
+    right: .5rem;
+
+    /* Leaving this comment as thanks to the website: Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#7c7c7c+0,2b2b2b+23,111111+52,2b2b2b+81,7c7c7c+100 */
+    background: #7c7c7c; /* Old browsers */
+    background: -moz-linear-gradient(left, #7c7c7c 0%, #2b2b2b 23%, #111111 52%, #2b2b2b 81%, #7c7c7c 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #7c7c7c 0%, #2b2b2b 23%, #111111 52%, #2b2b2b 81%, #7c7c7c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #7c7c7c 0%, #2b2b2b 23%, #111111 52%, #2b2b2b 81%, #7c7c7c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7c7c7c', endColorstr='#7c7c7c', GradientType=1); /* IE6-9 */
+}
+
+[data-noselect] {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+#editor {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+
+    #toolbar {
+        width: 100%;
+        padding-left: .25rem;
+        background-color: lightgray;
+
+        button {
+            color:black;
+            background-color: white;
+            border: 1px solid black;
+            margin: 0;
+        }
+
+        [data-tool-selected] {
+            background-color: #ecee78;
+        }
+        [data-once] {
+            background-color: #afeed8;
+        }
+        [data-wip] {
+            background-color: #ff8b87;
+            border: 1px solid red;
+        }
+
+        #tb-help {
+            background-color: gold;
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    #workspace {
+        display: flex;
+        flex-flow: row nowrap;
+        flex-grow: 1;
+
+        #canvasWrapper {
+            position: relative;
+            background-color: red;
+            flex-grow: 1;
+            width: 75%;
+            justify-self: stretch;
+
+            #canvas {
+                position: absolute;
+                background-color: yellow;
+            }
+        }
+        #propertiesWrapper {
+            flex-grow: 0;
+            width: 25%;
+            max-width: 300px;
+        }
+    }
+}
+
+#modal {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    display: none;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0,0,0,.4);
+
+    &-content {
+        overflow-y: auto;
+        max-height: 80vh;
+        padding-top: 1rem;
+        max-width: 500px;
+        background-color: white;
+        border: 1px solid black;
+
+        display: flex;
+        flex-flow: column nowrap;
+
+        &-header {
+            padding-left: 1rem;
+            position: relative;
+            font-size: 1.3rem;
+        }
+        &-body {
+            overflow: auto;
+            flex-shrink: 1;
+            flex-grow: 1;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        &-buttons {
+            border-top: 1px solid gray;
+            background-color: #dcdcdc;
+            padding: .5rem 1rem;
+
+            button {
+                min-width: 6rem;
+            }
+        }
+    }
+}
