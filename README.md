@@ -1,5 +1,22 @@
-# Network
-Network is a simple online game. The game draws inspiration from old Czech classic "Bulánci". The game supports as many players as the server can handle.
+# Network-game
+This project is a small online game with main focus to demonstrate the difference between extrapolation and interpolation and its effects on user experience in networked environments that require real time synchronization.
+
+This repository was created for my bachelor's thesis: [Distributed state synchronization (DSpace)](https://dspace.cvut.cz/handle/10467/87656), [thesis text (available only in Czech)](https://dspace.cvut.cz/bitstream/handle/10467/87656/F3-BP-2020-Neuvirt-Matyas-synchronizace_distribuovaneho_stavu.pdf?sequence=-1&isAllowed=y).
+
+Online demo link: work in progress.
+
+## Overview
+
+The game is simple isometric top down 2D shooter game. The graphics are just simple colored shapes. The game spawns different power-ups (healing, different weapons). The player with the most frags wins. The game features a multiple map rotation. If no players are present, the server 'freezes' to conserve resources.
+
+The game also allows to play the game in a single player session, reusing the multiplayer Node.js code running on utilizing websockets to be run locally in the browser.
+
+Because the local session reuses the same code as the dedicated server, the code is tailored to and processed by webpack to allow reuse between the web browser and Node.js environment. Mainly unifying the import/export module system across the source code, which is later minified and bundled for both browsers and Node.js.
+
+The project also features an accessible map editor that allows storing the developed maps in .json. These maps then can be placed in the server's map folder to add them to the rotation (requires restart).
+
+# Developer info and running the project
+
 ## Useful commands
 `npm run build` - builds the required .js bundles   
 `npm run start` - starts the server at port 3000  
