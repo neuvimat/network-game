@@ -1,0 +1,107 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <input type="file" id="file" hidden>
+    <div id="editor">
+        <div id="toolbar">
+            <button id="tb-save">Save</button>
+            <button id="tb-load">Load</button>
+            <button id="tb-tSelect">Select vertex</button>
+            <button id="tb-tAddVertex">Add vertex</button>
+            <button id="tb-tErasePoly" data-once="">Erase polygon</button>
+            <button id="tb-tTriangulate" data-once="">Triangulate</button>
+            <button id="tb-tInsertVertex" data-once="" data-wip="">Insert Vertex</button>
+            <button id="tb-tToWall" data-once="">Convert to Wall</button>
+            <button id="tb-tToSpawnArea" data-once="">Convert to SpawnArea</button>
+            <button id="tb-tAutogen" data-once="" data-wip="">T: autogen</button>
+            <button id="tb-tAutogenBack" data-once="" data-wip="">T: take back autogen</button>
+            <button id="tb-help">HELP</button>
+        </div>
+        <div id="workspace">
+            <div id="canvasWrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div id="propertiesWrapper">
+                <input type="number">
+                <input type="text">
+                <input type="number">
+                <input type="number">
+            </div>
+        </div>
+        <div id="statusbar">
+            Zoom: <span id="sb-zoom">1</span>| Camera x/y: <span id="sb-cx">0</span>/<span id="sb-cy">0</span>
+        </div>
+    </div>
+    <div id="modal" hidden="hidden">
+        <div id="modal-content">
+            <div id="modal-content-header" class="sweetGradientBottomBorder">
+                Help
+            </div>
+            <div id="modal-content-body">
+                <h4>About</h4>
+                <p>Simple editor for making maps for Network (bachelor thesis game).</p>
+                <h4>Controls</h4>
+                <ul>
+                    <li>WASD to move camera (SHIFT for faster jumps)</li>
+                    <li>Arrows to nudge selection. SHIFT to nudge further, CTRL to nudge by pixel, ALT to snap to grid
+                        in arrow axis.
+                    </li>
+                    <li>SPACE - deselect all</li>
+                    <li>DELETE - delete (selected vertices, since everything else is not selectable)</li>
+                    <li>When this guide refers to selected polygons it means all polygons that contain currently
+                        selected vertices
+                    </li>
+                    <li>Mouse wheel - zoom in or out. Cursor must be over canvas to work</li>
+                    <li>Review current camera position and zoom level on the bottom status bar</li>
+                </ul>
+                <h4>Save/Load</h4>
+                <p>Maps are stored as .json. You can load from machine and save to machine. To make to map work in-game,
+                    you need to put the exported .json to 'maps' folder on the server and configure map list to contain
+                    the name of the map. </p>
+                <h4>Tools</h4>
+                <p>Tools with bluish background are 'one-time' tools. They do what they are supposed to as the button is
+                    clicked. Tools with white buttons are 'click modifiers'. Buttons with reddish background do not work
+                    as they are W.I.P.</p>
+                <ul>
+                    <li>Select vertex - hold SHIFT to add to selection. Click far from any vertex to deselect all</li>
+                    <li>Add vertex - if no vertex is selected, automatically creates new polygon. Adds vertex to polygon
+                        of currently selected vertex. TIP: to quickly create new polygon, press SPACE to deselect all and
+                        then click where you want the first vertex of your new polygon.
+                    </li>
+                    <li>Erase polygon - erases select polygons</li>
+                    <li>Triangulate - convert selected polygons to tris</li>
+                    <li>Insert vertex - inserts a vertex between two selected vertices</li>
+                    <li>Convert to wall - make selected polygon a wall (all polygons default to walls)</li>
+                    <li>Convert to SpawnArea - mark polygon as spawn area</li>
+                    <li>Autogen - automatically creates spawn areas around walls</li>
+                    <li>Take back autogen - remove all spawn areas created by autogen</li>
+                </ul>
+                <h4>Walls</h4>
+                <p>Walls are impassable obstacles that are rendered completely black during game. Walls must be of
+                    convex shape. If they are not, use the <strong>triangulate</strong> tool. Concave walls cause
+                collision detection issues.</p>
+                <h4>Spawn areas</h4>
+                <p>Players and pickups will only spawn in Spawn Areas. If no spawn area is present in a map, then the
+                    pickup/player can appear anywhere on the map, i.e. in walls. Players will usually be pushed out of
+                    walls, but pickups remain stuck.
+                    <strong>Triangulation of spawn areas is not needed.</strong></p>
+                <h4>Map borders</h4>
+                <p>Map borders are indicated by pink colored walls. The crosshair in the middle represents map's origin
+                 (0,0) point.</p>
+                <h4>Known issues</h4>
+                <ul>
+                    <li><strong>There is no undo</strong></li>
+                    <li>Triangulation converts resulting tris to walls</li>
+                    <li>Triangulated walls have visible lines between triangles in-game</li>
+                    <li>Only way to move vertices is by nudging with arrow keys</li>
+                    <li>Right side of editor windows (properties bar) is completely useless</li>
+                </ul>
+            </div>
+            <div id="modal-content-buttons">
+                <button id="modal-content-buttons-k">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/Editor.bundle.js"></script>
+{% endblock %}

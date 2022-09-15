@@ -1,0 +1,42 @@
+{
+  "name": "network",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "watchFront": "webpack --watch --config ./webpack.front.config.js",
+    "watchBack": "webpack --watch --config ./webpack.back.config.js",
+    "build": "webpack --config ./webpack.back.config.js & webpack --config ./webpack.front.config.js",
+    "watch": "webpack --watch --config ./webpack.back.config.js && webpack --watch --config ./webpack.front.config.js",
+    "start": "node bin/DedicatedServingServer.js",
+    "test": "mocha --require esm",
+    "jsdoc": "jsdoc -c conf.json",
+    "esdocs": "./node_modules/.bin/esdoc -c esdoc.json"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "collisions": "^2.0.13",
+    "cookie-parser": "~1.4.4",
+    "debug": "^4.1.1",
+    "earcut": "^2.2.2",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "jsdoc": "^3.6.4",
+    "less-middleware": "^3.1.0",
+    "mocha": "^7.0.1",
+    "morgan": "~1.9.1",
+    "npm": "^6.14.4",
+    "source-map-support": "^0.5.16",
+    "twig": "^1.13.3",
+    "webpack-node-externals": "^1.7.2",
+    "ws": "^7.2.3"
+  },
+  "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "esm": "^3.2.25",
+    "ifdef-loader": "^2.1.5",
+    "tui-jsdoc-template": "^1.2.2",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}

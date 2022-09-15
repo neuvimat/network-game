@@ -1,0 +1,36 @@
+{
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc"
+    ]
+  },
+  "sourceType": "module",
+  "source": {
+    "include": [
+      "./src/"
+    ],
+    "includePattern": ".+\\.js$",
+    "excludePattern": "(docs)"
+  },
+  "plugins": [],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "systemName": "NAFIDAS",
+    "footer": "Created by Matyáš Neuvirt",
+    "copyright": "2020",
+    "navType": "vertical",
+    "theme": "spacelab",
+    "linenums": true,
+    "collapseSymbols": true,
+    "inverseNav": true
+  },
+  "opts": {
+//    "template": "node_modules/tui-jsdoc-template",
+    "encoding": "utf8",
+    "destination": "docs/js",
+    "recurse": true,
+    "private": true
+  }
+}

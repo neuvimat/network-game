@@ -1,0 +1,159 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    <div id="graphics">
+        <img id="smg1" src="./graphics/smg1.png">
+        <img id="shotgun" src="./graphics/shotgun.png">
+        <img id="medkit" src="./graphics/medkit.png">
+        <img id="missing" src="./graphics/missing.png">
+    </div>
+    <div id="game" hidden>
+        <div id="ui">
+            <div id="escMenu" hidden>
+                <div><h2>Game Menu</h2></div>
+                <div>
+                    <button id="escMenu-ping">Hide status</button>
+                </div>
+                <div>
+                    <button id="escMenu-exit">Exit</button>
+                </div>
+                <div>
+                    <button id="escMenu-close">Close menu</button>
+                </div>
+            </div>
+            <div id="health">
+                <div id="health-bar"></div>
+            </div>
+            <div id="weapon" data-noselect="">
+                --
+            </div>
+            <div id="status" data-noselect="">
+                <div id="map">DEF</div>
+                <div id="ping">DEF</div>
+                <div id="serverDelta">DEF</div>
+            </div>
+            <div id="fakeLagAmountHolder"><input id="fakeLagPingGame" type="number" value="50" step="5" min="0"
+                                                 max="1000"></div>
+            <div id="countdown">
+                <span id="countdown-time" data-noselect="">10:00</span>
+                <img src="./graphics/timerBackground.svg">
+            </div>
+            <div id="chat"></div>
+            <div id="scoreboard" hidden data-noselect="">
+                <div id="scoreboard-header">
+                    OPPA SUPPA SERVER
+                </div>
+                <div id="scoreboard-content"></div>
+            </div>
+            <div id="banner" data-noselect></div>
+        </div>
+        <div id="canvasWrapper">
+            <canvas id="canvasBackground"></canvas>
+            <canvas id="canvasForeground"></canvas>
+        </div>
+    </div>
+    <div id="menu" hidden>
+        <h1>Network - client</h1>
+        <button id="multiplayer">Start Multiplayer</button>
+        <a href="./editor"><button>Level Editor</button></a>
+        <button id="singleplayer">Start Local Game (basic map only)</button>
+        <div id="flex">
+            <form>
+                <fieldset>
+                    <legend>Controls</legend>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Key</th>
+                                <th>Command</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>M</td>
+                                <td>open game menu</td>
+                            </tr>
+                            <tr>
+                                <td>W</td>
+                                <td>move up</td>
+                            </tr>
+                            <tr>
+                                <td>A</td>
+                                <td>move left</td>
+                            </tr>
+                            <tr>
+                                <td>S</td>
+                                <td>move down</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>move right</td>
+                            </tr>
+                            <tr>
+                                <td><strike>LEFT SHIFT</strike></td>
+                                <td>sprint <strong>(in latest patch always ON)</strong></td>
+                            </tr>
+                            <tr>
+                                <td>SPACE</td>
+                                <td>walk</td>
+                            </tr>
+                            <tr>
+                                <td>K</td>
+                                <td>fire</td>
+                            </tr>
+                            <tr>
+                                <td>MOUSE LEFT CLICK</td>
+                                <td>fire</td>
+                            </tr>
+                            <tr>
+                                <td>TAB</td>
+                                <td>show scoreboard</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Options</legend>
+                    <div>
+                        <label for="nickname">
+                            Nickname:
+                        </label>
+                        <input id="nickname" type="text" value="Guest">
+                    </div>
+                    <div>
+                        <label for="fullscreen">Enter full screen</label>
+                        <input id="fullscreen" type="checkbox">
+                    </div>
+                    <div>
+                        <label for="wsUrl">
+                            Websocket URL:
+                        </label>
+                        <input id="wsUrl" type="text" value="ws://localhost:3000">
+                    </div>
+                    <div>
+                        <label for="netImp">Render Strategy & Snapshots Handling</label>
+                        <select id="netImp">
+                            <option value="snapshot">Latest snapshot only</option>
+                            <option value="extrapolation">Extrapolation</option>
+                            <option value="interpolation">Interpolation</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="fakeLagEnabled">Fake lag enabled</label>
+                        <input id="fakeLagEnabled" type="checkbox">
+                    </div>
+                    <div>
+                        <label for="fakeLagPing">Fake lag latency</label>
+                        <input id="fakeLagPing" type="number" value="50" step="5" min="0" max="1000">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div>Press <strong>p</strong> at any time to open debug log</div>
+        <div>Press <strong>SPACE</strong> to join multiplayer game with fullscreen disabled</div>
+    </div>
+    <div id="log"></div>
+    <script src="./js/Client.bundle.js"></script>
+{% endblock %}
