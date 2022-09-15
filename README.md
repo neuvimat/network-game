@@ -11,7 +11,7 @@ The game is simple isometric top down 2D shooter game. The graphics are just sim
 
 The game also allows to play the game in a single player session, reusing the multiplayer Node.js code running on utilizing websockets to be run locally in the browser.
 
-Because the local session reuses the same code as the dedicated server, the code is tailored to and processed by webpack to allow reuse between the web browser and Node.js environment. Mainly unifying the import/export module system across the source code, which is later minified and bundled for both browsers and Node.js.
+Because the local session reuses the same code as the dedicated server, the code is tailored to and processed by [Webpack](https://webpack.js.org/) and [ifdef-loader](https://www.npmjs.com/package/ifdef-loader) to allow reuse between the web browser and Node.js environment. Mainly unifying the import/export module system across the source code, which is later minified and bundled for both browsers and Node.js.
 
 The project also features an accessible map editor that allows storing the developed maps in .json. These maps then can be placed in the server's map folder to add them to the rotation (requires restart).
 
