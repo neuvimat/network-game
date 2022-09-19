@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index');
+    res.render('index', {websocketUrl: process.env.WS || 'ws://localhost:3000'});
 });
 router.get('/editor', function (req, res, next) {
     res.render('editor');

@@ -130,7 +130,7 @@
                         <label for="wsUrl">
                             Websocket URL:
                         </label>
-                        <input id="wsUrl" type="text" value="ws://localhost:3000">
+                        <input id="wsUrl" type="text" value="{{ websocketUrl }}">
                     </div>
                     <div>
                         <label for="netImp">Render Strategy & Snapshots Handling</label>
@@ -156,4 +156,5 @@
     </div>
     <div id="log"></div>
     <script src="./js/Client.bundle.js"></script>
+    <script>window.websocketUrl = '{{ websocketUrl }}'</script>
 {% endblock %}

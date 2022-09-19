@@ -31,7 +31,7 @@ window.addEventListener('load', function () {
 
     // Autofill relevant websocket url
     let wsUrl = document.getElementById('wsUrl');
-    wsUrl.value = 'ws://' + window.location.hostname + ':' + window.location.port;
+    wsUrl.value = window.websocketUrl;
 
     // Init the Logger singleton
     Logger.init(2);

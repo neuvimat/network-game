@@ -7,6 +7,11 @@ import 'source-map-support/register'
 import createHttpServer from './HttpServer'
 import {ServerGameRunner} from './ServerGameRunner'
 import {GLOBALS} from "Root/GLOBALS";
+import {config} from "dotenv";
+import path from "path";
+config({path: path.resolve(__dirname, '..', '.env.local')})
+config({path: path.resolve(__dirname, '..', '.env')})
+
 
 console.log('============== Starting server: list of features');
 /// #if DEBUG
