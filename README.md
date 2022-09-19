@@ -1,5 +1,7 @@
 # Network-game
 
+**Demo available at [https://digistruct.cz/network-game](https://digistruct.cz/network-game).**
+
 This project is a small online game with main focus to demonstrate the difference between extrapolation and
 interpolation and its effects on user experience in networked environments that require real time synchronization.
 
@@ -7,8 +9,6 @@ This repository was created for my bachelor's
 thesis: [Distributed state synchronization (DSpace)](https://dspace.cvut.cz/handle/10467/87656)
 , [thesis text (available only in Czech)](https://dspace.cvut.cz/bitstream/handle/10467/87656/F3-BP-2020-Neuvirt-Matyas-synchronizace_distribuovaneho_stavu.pdf?sequence=-1&isAllowed=y)
 .
-
-Online demo link: work in progress.
 
 ## Overview
 
