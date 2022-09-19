@@ -15,6 +15,22 @@ Because the local session reuses the same code as the dedicated server, the code
 
 The project also features an accessible map editor that allows storing the developed maps in .json. These maps then can be placed in the server's map folder to add them to the rotation (requires restart).
 
+## Screenshots
+In-game screenshots will be added later...
+
+
+![Client main menu](./screenshots/client-main-menu.png "Client main menu")  
+*Client main menu* 
+
+![In-game screenshot](./screenshots/game1.png "In-game screenshot #1")  
+*In-game screenshot #1*
+
+![In-game screenshot (scoreboard)](./screenshots/game2.png "In-game screenshot #1")  
+*In-game screenshot #2*
+
+![alt text](./screenshots/editor.png "Map Editor")  
+*Map Editor*
+
 # Developer info and running the project
 
 ## Useful commands
